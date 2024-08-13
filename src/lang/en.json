@@ -1,0 +1,70 @@
+{
+	"system_name": "Asiainfo Admin",
+	"copyright": "Copyright ©️ {0} Asiainfo Admin",
+	"menu": {
+		"home": "Home",
+		"table_example": "Table Example",
+		"form_example": "Form Example"
+	},
+	"common": {
+		"ok": "Ok",
+		"yes": "Yes",
+		"no": "No",
+		"info": "Info",
+		"message": "Message",
+		"error": "Error",
+		"warning": "Warning",
+		"tips": "Tips",
+		"user_name": "User Name",
+		"password": "Password",
+		"verification_code": "Verification Code",
+		"age": "Age",
+		"email": "Email",
+		"address": "Address",
+		"gender": "Gender"
+	},
+	"operate": {
+		"search": "Search",
+		"reset": "Reset",
+		"submit": "Submit",
+		"confirm": "Confirm",
+		"cancel": "Cancel",
+		"add": "Add",
+		"edit": "Edit",
+		"modify": "Modify",
+		"delete": "Delete",
+		"back": "Back",
+		"login": "Login",
+		"logout": "Logout"
+	},
+	"message": {
+		"operation_successful": "Operation successful",
+		"operation_failed": "Operation failed",
+		"added_successful": "Added successfully",
+		"added_failed": "Added failed",
+		"edit_successful": "Edit successfully",
+		"edit_failed": "Edit failed",
+		"modification_successful": "Modification successful",
+		"modification_failed": "Modification failed",
+		"deleted_successful": "Deleted successful",
+		"deleted_failed": "Deletion failed",
+		"saved_successful": "Saved successful",
+		"saved_failed": "Saved failed",
+		"submit_successful": "Submit successful",
+		"submit_failed": "Submit failed",
+		"login_successful": "Login successful",
+		"login_failed": "Login failed",
+		"logout_successful": "Logout successful",
+		"logout_failed": "Logout failed"
+	},
+	"login_page": {
+		"user_name_input": "Please enter user name",
+		"password_input": "Please enter password",
+		"verification_code_input": "Please enter verification code",
+		"remember_me": "Remember Me",
+		"user_info_required": "Please enter your username and password",
+		"verification_code_required": "Please enter the verification code",
+		"to_be_verified": "Verifying, please wait...",
+		"logging_in": "Logging in..."
+	}
+}
