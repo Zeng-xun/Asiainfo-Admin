@@ -8,7 +8,7 @@
 			v-show="!appStore.collapsed"
 			class="ml-10 max-w-140 flex-shrink-0 text-16 color-primary font-bold"
 		>
-			{{ title }}
+			{{ $t(`${title}`) }}
 		</h2>
 	</router-link>
 </template>
@@ -16,7 +16,7 @@
 <script setup>
 	import { useAppStore } from '@/store'
 
-	const title = import.meta.env.VITE_TITLE
+	const title = import.meta.env.VITE_I18N_CODE
 
 	const appStore = useAppStore()
 </script>

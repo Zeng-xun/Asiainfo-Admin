@@ -5,7 +5,7 @@ export default [
 		name: 'Table Example',
 		code: 'TableExample',
 		i18n: 'table_example',
-		icon: 'i-fe:table',
+		icon: 'i-fluent-mdl2:table',
 		show: true,
 		enable: true,
 		path: '/table-example',

@@ -16,9 +16,9 @@
 				<span class="text-14">{{
 					userStore.nickName ?? userStore.username
 				}}</span>
-				<span class="text-12 opacity-50"
+				<!-- <span class="text-12 opacity-50"
 					>[{{ userStore.currentRole?.name }}]</span
-				>
+				> -->
 			</div>
 		</div>
 	</n-dropdown>
@@ -29,12 +29,14 @@
 <script setup>
 	import { useAuthStore, usePermissionStore, useUserStore } from '@/store'
 	import { RoleSelect } from '@/layouts/components'
+	import { useI18n } from 'vue-i18n'
 	// import api from '@/api'
 
 	const router = useRouter()
 	const userStore = useUserStore()
 	const authStore = useAuthStore()
 	const permissionStore = usePermissionStore()
+	const { t } = useI18n()
 
 	const options = reactive([
 		{
@@ -55,7 +57,7 @@
 			show: computed(() => userStore.roles.length > 1)
 		},
 		{
-			label: '退出登录',
+			label: t('operate.logout'),
 			key: 'logout',
 			icon: () => h('i', { class: 'i-mdi:exit-to-app text-14' })
 		}
@@ -76,9 +78,9 @@
 				break
 			case 'logout':
 				$dialog.confirm({
-					title: '提示',
+					title: t('common.tips'),
 					type: 'info',
-					content: '确认退出？',
+					content: t('confirm.logout_confirm'),
 					async confirm() {
 						try {
 							// await api.logout()
@@ -86,7 +88,7 @@
 							console.error(error)
 						}
 						authStore.logout()
-						$message.success('已退出登录')
+						$message.success(t('operate.logout'))
 					}
 				})
 				break

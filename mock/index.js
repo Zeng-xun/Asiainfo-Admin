@@ -19,7 +19,8 @@ const generateRandomUser = () => {
 		),
 		token: Mock.Random.guid(),
 		address: Mock.Random.county(true),
-		email: Mock.Random.email()
+		email: Mock.Random.email(),
+		status: Mock.mock('@integer(0, 1)')
 	}
 }
 
@@ -67,7 +68,8 @@ const mock = [
 						name: Mock.Random.cname(),
 						age: Mock.Random.integer(18, 60),
 						address: Mock.Random.county(true),
-						email: Mock.Random.email()
+						email: Mock.Random.email(),
+						status: Mock.mock('@integer(0, 1)')
 					})
 				}
 				return data

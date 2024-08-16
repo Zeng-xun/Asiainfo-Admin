@@ -12,6 +12,9 @@
 
 <script setup>
 	import { useTabStore } from '@/store'
+	import { useI18n } from 'vue-i18n'
+
+	const { t } = useI18n()
 
 	const props = defineProps({
 		show: {
@@ -38,26 +41,26 @@
 
 	const options = computed(() => [
 		{
-			label: '重新加载',
+			label: t('reload'),
 			key: 'reload',
 			disabled: props.currentPath !== tabStore.activeTab,
 			icon: () => h('i', { class: 'i-mdi:refresh text-14' })
 		},
 		{
-			label: '关闭',
+			label: t('close'),
 			key: 'close',
-			disabled: tabStore.tabs.length <= 1,
+			disabled: tabStore.tabs.length <= 1 || props.currentPath === '/',
 			icon: () => h('i', { class: 'i-mdi:close text-14' })
 		},
 		{
-			label: '关闭其他',
+			label: t('close_other'),
 			key: 'close-other',
 			disabled: tabStore.tabs.length <= 1,
 			icon: () =>
 				h('i', { class: 'i-mdi:arrow-expand-horizontal text-14' })
 		},
 		{
-			label: '关闭左侧',
+			label: t('close_left_side'),
 			key: 'close-left',
 			disabled:
 				tabStore.tabs.length <= 1 ||
@@ -65,7 +68,7 @@
 			icon: () => h('i', { class: 'i-mdi:arrow-expand-left text-14' })
 		},
 		{
-			label: '关闭右侧',
+			label: t('close_right_side'),
 			key: 'close-right',
 			disabled:
 				tabStore.tabs.length <= 1 ||

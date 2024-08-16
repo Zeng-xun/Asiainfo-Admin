@@ -1,38 +1,51 @@
 <template>
 	<CommonPage>
-		<AppCard class="flex flex-justify-between flex-items-center gap-10px">
-			<n-form
-				ref="formRef"
-				inline
-				:model="searchForm"
-				:rules="searchFormRules"
-			>
+		<AiSearchWrapper
+			showReset
+			@handleSearch="handleSearch"
+		>
+			<template #form>
 				<n-grid
 					:cols="24"
-					:x-gap="24"
+					:x-gap="10"
+					:y-gap="10"
 				>
 					<n-form-item-gi
-						span="6"
-						path="name"
+						:span="4"
+						:show-label="false"
+						:show-feedback="false"
 					>
-						<n-input v-model:value="searchForm.name" />
+						<n-input
+							v-model:value="searchForm.name"
+							:placeholder="$t('common.user_name')"
+						/>
 					</n-form-item-gi>
 					<n-form-item-gi
-						span="6"
-						path="address"
+						:span="4"
+						:show-label="false"
+						:show-feedback="false"
 					>
-						<n-input v-model:value="searchForm.address" />
+						<n-input
+							v-model:value="searchForm.address"
+							:placeholder="$t('common.address')"
+						/>
+					</n-form-item-gi>
+					<n-form-item-gi
+						:span="4"
+						:show-label="false"
+						:show-feedback="false"
+					>
+						<n-input
+							v-model:value="searchForm.email"
+							:placeholder="$t('common.email')"
+						/>
 					</n-form-item-gi>
 				</n-grid>
-			</n-form>
-			<n-divider vertical />
-			<n-button
-				type="primary"
-				@click="search"
-				>{{ $t('operate.search') }}</n-button
-			>
-			<n-button>{{ $t('operate.reset') }}</n-button>
-		</AppCard>
+			</template>
+			<template #actions>
+				<n-button type="primary">{{ $t('operate.add') }}</n-button>
+			</template>
+		</AiSearchWrapper>
 		<AiTable
 			:loading="loading"
 			:data="data"
@@ -41,17 +54,22 @@
 			@currentPageChanged="currentPageChanged"
 			@pageSizeChanged="pageSizeChanged"
 		></AiTable>
-		<AiModal ref="model"> hahah </AiModal>
+		<AiModal ref="model"> edit </AiModal>
 	</CommonPage>
 </template>
 
 <script setup>
 	import { onMounted, ref, h, reactive } from 'vue'
+	import { useI18n } from 'vue-i18n'
 	import mockApi from '@/api/mock'
-	import { NTag, NButton } from 'naive-ui'
+	import { NButton } from 'naive-ui'
+
+	const { t } = useI18n()
 
 	const searchForm = ref({
-		name: ''
+		name: '',
+		address: '',
+		email: ''
 	})
 	const searchFormRules = ref({})
 
@@ -69,34 +87,41 @@
 	})
 	const columns = ref([
 		{
-			title: 'ID',
+			title: t('common.id'),
 			key: 'id',
 			width: 'auto'
 		},
 		{
-			title: 'Name',
+			title: t('common.user_name'),
 			key: 'name',
+			width: 'auto'
+		},
+		{
+			title: t('common.status'),
+			key: 'status',
 			width: 'auto',
 			render(row, index) {
 				return h(
-					NTag,
-					{ type: 'primary', size: 'small' },
-					() => row.name
+					'span',
+					{
+						class: `${row.status === 0 ? 'status-tag-red' : 'status-tag-#697eff'}`
+					},
+					{ default: () => (row.status === 0 ? 'Stop' : 'Normal') }
 				)
 			}
 		},
 		{
-			title: 'Address',
+			title: t('common.address'),
 			key: 'address',
 			width: 'auto'
 		},
 		{
-			title: 'Age',
+			title: t('common.age'),
 			key: 'age',
 			width: 'auto'
 		},
 		{
-			title: 'Action',
+			title: t('common.actions'),
 			key: 'actions',
 			render(row) {
 				return [
@@ -112,11 +137,11 @@
 							},
 							onClick: () => {
 								model.value.open({
-									title: 'Model'
+									title: t('operate.edit')
 								})
 							}
 						},
-						{ default: () => 'Edit' }
+						{ default: () => t('operate.edit') }
 					),
 					h(
 						NButton,
@@ -126,13 +151,19 @@
 							type: 'error',
 							size: 'small',
 							onClick: () => {
-								window.$dialog.confirm({
-									title: 'tips',
-									content: '11111'
+								$dialog.confirm({
+									title: t('common.warning'),
+									content: t('confirm.delete_confirm'),
+									onPositiveClick: () => {
+										$message.success('确定')
+									},
+									onNegativeClick: () => {
+										$message.error('不确定')
+									}
 								})
 							}
 						},
-						{ default: () => 'Delete' }
+						{ default: () => t('operate.delete') }
 					)
 				]
 			}
@@ -158,6 +189,9 @@
 				}, 500)
 			})
 	}
+	function handleSearch() {
+		queryData()
+	}
 	function currentPageChanged(val) {
 		pages.page = val
 		queryData()
@@ -177,4 +211,4 @@
 	}
 </script>
 
-<style></style>
+<style lang="scss"></style>

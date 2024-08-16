@@ -14,7 +14,7 @@
 	import { useAppStore } from '@/store'
 	import { useI18n } from 'vue-i18n'
 
-	const { locale } = useI18n()
+	const { locale, t } = useI18n()
 	const appStore = useAppStore()
 
 	function toggleLanguage() {
@@ -22,8 +22,8 @@
 		appStore.toggleLanguage(targetLanguage)
 		locale.value = targetLanguage
 		window.$notification.success({
-			title: 'Language switching successful',
-			description: `The current language is ${targetLanguage === 'zh' ? 'Chinese' : 'English'}`,
+			title: t('language_switch_tip'),
+			description: t('current_language'),
 			duration: 3000
 		})
 	}

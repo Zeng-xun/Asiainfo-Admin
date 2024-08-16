@@ -17,7 +17,6 @@ export default defineConfig({
 				height: '1em'
 			},
 			collections: {
-				me: FileSystemIconLoader('./src/assets/icons/isme'),
 				fe: FileSystemIconLoader('./src/assets/icons/feather')
 			}
 		}),
@@ -43,6 +42,28 @@ export default defineConfig({
 			{
 				'box-shadow':
 					'0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017'
+			}
+		],
+		[
+			/^status-tag-(.*)$/,
+			function* ([, color], { symbols }) {
+				yield {
+					position: 'relative',
+					display: 'inline-block',
+					'margin-left': '10px'
+				}
+				yield {
+					[symbols.selector]: selector => `${selector}::before`,
+					content: '""',
+					position: 'absolute',
+					top: '50%',
+					left: '-10px',
+					transform: 'translateY(-50%)',
+					width: '6px',
+					height: '6px',
+					'border-radius': '50%',
+					'background-color': color
+				}
 			}
 		]
 	],

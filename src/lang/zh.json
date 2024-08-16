@@ -1,6 +1,16 @@
 {
 	"system_name": "亚信管理系统",
-	"copyright": "版权所有 ©️ {0} 亚信管理系统",
+	"copyright": "版权所有 ©️ {0} ",
+	"layout_settings": "布局设置",
+	"general": "通用",
+	"comprehensive": "全面",
+	"reload": "重新加载",
+	"close": "关闭",
+	"close_other": "关闭其他",
+	"close_left_side": "关闭左侧",
+	"close_right_side": "关闭右侧",
+	"language_switch_tip": "语言切换成功",
+	"current_language": "当前语言是中文",
 	"menu": {
 		"home": "主页",
 		"table_example": "表格示例",
@@ -15,13 +25,18 @@
 		"error": "错误",
 		"warning": "警告",
 		"tips": "提示",
+		"id": "编号",
+		"user_id": "用户编号",
 		"user_name": "用户名",
 		"password": "密码",
 		"verification_code": "验证码",
 		"age": "年龄",
 		"email": "邮箱",
 		"address": "地址",
-		"gender": "性别"
+		"gender": "性别",
+		"status": "状态",
+		"actions": "操作",
+		"total": "总数"
 	},
 	"operate": {
 		"search": "搜索",
@@ -57,7 +72,11 @@
 		"logout_successful": "登出成功",
 		"logout_failed": "登出失败"
 	},
-	"login_page": {
+	"confirm": {
+		"delete_confirm": "你确定要删除该数据吗？",
+		"logout_confirm": "你确定要退出该系统吗？"
+	},
+	"authentication": {
 		"user_name_input": "请输入用户名",
 		"password_input": "请输入密码",
 		"verification_code_input": "请输入验证码",

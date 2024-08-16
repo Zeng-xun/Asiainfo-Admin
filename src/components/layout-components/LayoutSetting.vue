@@ -12,17 +12,17 @@
 					<i class="i-fe:settings cursor-pointer" />
 				</div>
 			</template>
-			布局设置
+			{{ $t('layout_settings') }}
 		</n-tooltip>
 
 		<AiModal
 			ref="modalRef"
-			title="布局设置"
+			:title="$t('layout_settings')"
 			:show-footer="false"
 			width="600px"
 		>
-			<n-space justify="space-between">
-				<div
+			<n-space justify="space-around">
+				<!-- <div
 					class="flex-col cursor-pointer justify-center"
 					@click="appStore.setLayout('simple')"
 				>
@@ -46,7 +46,7 @@
 					>
 						简约
 					</n-button>
-				</div>
+				</div> -->
 				<div
 					class="flex-col cursor-pointer justify-center"
 					@click="appStore.setLayout('normal')"
@@ -74,7 +74,7 @@
 						:type="appStore.layout === 'normal' ? 'primary' : ''"
 						ghost
 					>
-						通用
+						{{ $t('general') }}
 					</n-button>
 				</div>
 
@@ -110,10 +110,10 @@
 						:type="appStore.layout === 'full' ? 'primary' : ''"
 						ghost
 					>
-						全面
+						{{ $t('comprehensive') }}
 					</n-button>
 				</div>
-				<div
+				<!-- <div
 					class="flex-col cursor-pointer justify-center"
 					@click="appStore.setLayout('empty')"
 				>
@@ -131,12 +131,8 @@
 					>
 						空白
 					</n-button>
-				</div>
+				</div> -->
 			</n-space>
-			<p class="mt-16 opacity-50">
-				注:
-				此设置仅对未设置layout或者设置成跟随系统的页面有效，菜单设置的layout优先级最高
-			</p>
 		</AiModal>
 	</div>
 </template>

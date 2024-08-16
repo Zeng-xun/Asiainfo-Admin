@@ -17,14 +17,14 @@
 						src="@/assets/images/logo.png"
 						class="mr-12 h-50"
 					/>
-					{{ title }}
+					{{ $t(`${title}`) }}
 				</h2>
 				<n-input
 					v-model:value="loginInfo.username"
 					autofocus
 					clearable
 					class="mt-32 h-40 items-center"
-					:placeholder="$t('login_page.user_name_input')"
+					:placeholder="$t('authentication.user_name_input')"
 				>
 					<template #prefix>
 						<i class="i-fe:user mr-12 opacity-20" />
@@ -36,7 +36,7 @@
 					type="password"
 					show-password-on="mousedown"
 					clearable
-					:placeholder="$t('login_page.password_input')"
+					:placeholder="$t('authentication.password_input')"
 					@keydown.enter="handleLogin()"
 				>
 					<template #prefix>
@@ -48,7 +48,9 @@
 					<n-input
 						v-model:value="loginInfo.captcha"
 						class="h-40 items-center"
-						:placeholder="$t('login_page.verification_code_input')"
+						:placeholder="
+							$t('authentication.verification_code_input')
+						"
 						:maxlength="4"
 						@keydown.enter="handleLogin()"
 					>
@@ -65,7 +67,7 @@
 				<n-checkbox
 					class="mt-20"
 					:checked="isRemember"
-					:label="$t('login_page.remember_me')"
+					:label="$t('authentication.remember_me')"
 					:on-update:checked="val => (isRemember = val)"
 				/>
 
@@ -97,7 +99,7 @@
 	const authStore = useAuthStore()
 	const router = useRouter()
 	const route = useRoute()
-	const title = import.meta.env.VITE_TITLE
+	const title = import.meta.env.VITE_I18N_CODE
 	const { t } = useI18n()
 
 	const loginInfo = ref({
@@ -154,12 +156,16 @@
 	async function handleLogin() {
 		const { username, password, captcha } = loginInfo.value
 		if (!username || !password)
-			return $message.warning(t('login_page.user_info_required'))
+			return $message.warning(t('authentication.user_info_required'))
 		if (!captcha)
-			return $message.warning(t('login_page.verification_code_required'))
+			return $message.warning(
+				t('authentication.verification_code_required')
+			)
 		try {
 			loading.value = true
-			$message.loading(t('login_page.to_be_verified'), { key: 'login' })
+			$message.loading(t('authentication.to_be_verified'), {
+				key: 'login'
+			})
 			const { result } = await mockApi.login({
 				account: username,
 				password: password.toString(),
@@ -183,10 +189,9 @@
 	}
 
 	async function onLoginSuccess(data = {}) {
-		// window.localStorage.setItem('userInfo-naive', JSON.stringify(data))
 		lStorage.set('userInfo', data)
 		authStore.setToken(data)
-		$message.loading(t('login_page.logging_in'), { key: 'login' })
+		$message.loading(t('authentication.logging_in'), { key: 'login' })
 		try {
 			$message.success(t('message.login_successful'), { key: 'login' })
 			console.log(route.query.redirect)

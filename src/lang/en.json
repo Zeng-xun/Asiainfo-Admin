@@ -1,6 +1,16 @@
 {
 	"system_name": "Asiainfo Admin",
-	"copyright": "Copyright ©️ {0} Asiainfo Admin",
+	"copyright": "Copyright ©️ {0} ",
+	"layout_settings": "Layout Settings",
+	"general": "General",
+	"comprehensive": "Comprehensive",
+	"reload": "Reload",
+	"close": "Close",
+	"close_other": "Close Other",
+	"close_left_side": "Close Left Side",
+	"close_right_side": "Close Right Side",
+	"language_switch_tip": "Language switching successful",
+	"current_language": "The current language is English",
 	"menu": {
 		"home": "Home",
 		"table_example": "Table Example",
@@ -15,13 +25,18 @@
 		"error": "Error",
 		"warning": "Warning",
 		"tips": "Tips",
+		"id": "ID",
+		"user_id": "User ID",
 		"user_name": "User Name",
 		"password": "Password",
 		"verification_code": "Verification Code",
 		"age": "Age",
 		"email": "Email",
 		"address": "Address",
-		"gender": "Gender"
+		"gender": "Gender",
+		"status": "Status",
+		"actions": "Actions",
+		"total": "Total"
 	},
 	"operate": {
 		"search": "Search",
@@ -57,7 +72,11 @@
 		"logout_successful": "Logout successful",
 		"logout_failed": "Logout failed"
 	},
-	"login_page": {
+	"confirm": {
+		"delete_confirm": "Are you sure to delete this data?",
+		"logout_confirm": "Are you sure to logout this system?"
+	},
+	"authentication": {
 		"user_name_input": "Please enter user name",
 		"password_input": "Please enter password",
 		"verification_code_input": "Please enter verification code",

@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import removeNoMatch from 'vite-plugin-router-warn'
-import { pluginIcons, pluginPagePathes } from './build/plugin-isme'
+import { pluginIcons, pluginPagePathes } from './build/plugin-asiainfo'
 import { viteMockServe } from 'vite-plugin-mock'
 
 export default defineConfig(({ mode }) => {

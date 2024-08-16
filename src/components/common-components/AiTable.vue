@@ -12,7 +12,7 @@
 			'show-size-picker': true,
 			'page-sizes': [10, 20, 30, 40, 50],
 			prefix({ itemCount }) {
-				return `Total count: ${itemCount}.`
+				return `${$t('common.total')}: ${itemCount}`
 			},
 			...pages
 		}"
@@ -26,7 +26,6 @@
 </template>
 
 <script setup>
-	import { defineProps, defineEmits } from 'vue'
 	defineProps({
 		loading: {
 			type: Boolean,
